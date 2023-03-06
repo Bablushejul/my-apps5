@@ -1,8 +1,9 @@
-import React from 'react';
-
-import classes from './Navigation.module.css';
+import React, { useContext } from "react";
+import AuthContext from "../Store/auth-context";
+import classes from "./Navigation.module.css";
 
 const Navigation = (props) => {
+  const ctx = useContext(AuthContext);
   return (
     <nav className={classes.nav}>
       <ul>
@@ -11,12 +12,12 @@ const Navigation = (props) => {
             <a href="/">Users</a>
           </li>
         )}
-        {props.isLoggedIn && (
+        {ctx.isLoggedIn && (
           <li>
             <a href="/">Admin</a>
           </li>
         )}
-        {props.isLoggedIn && (
+        {ctx.isLoggedIn && (
           <li>
             <button onClick={props.onLogout}>Logout</button>
           </li>
